@@ -92,3 +92,34 @@ creamos el mapeo de la base de datos tomando los modelos y transformandolos en t
 Configuracion del campo time_zone 
 > https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
+## Consola interactiva de python
+
+Consola que permite ejecutar codigo de python, con esta consola tengo acceso al proyecto.
+
+```python
+(venv) λ py manage.py shell
+Python 3.10.4 (tags/v3.10.4:9d38120, Mar 23 2022, 23:13:41) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+# importo modelos creados
+>>> from polls.models import Choice, Question
+# imprimir los registros de question 
+>>> Question.objects.all()
+<QuerySet []>
+# importar libreria timezone
+>>> from django.utils import timezone
+# Crear registro del modelo question
+>>> q = Question(question_text="¿Cual es el mejor curso de platsi?", pub_date=timezone.now())
+# Guardar en la bd
+>>> q.save()
+# verificar que la pregunta creada se haya guardado
+>>> q.question_text
+'¿Cual es el mejor curso de platsi?'
+```
+
+nota cada vez que nosotros actualizemos o agreguemos algo a los modelos tenemos que ejecutar los comandos
+
+```py
+λ py manage.py makemigrations polls
+λ py manage.py migrate
+```
