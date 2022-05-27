@@ -86,7 +86,7 @@ Una vez listos los modelos de nuestra app procedemos a ejecutar el comando :
 λ py manage.py migrate
 ```
 
-creamos el mapeo de la base de datos tomando los modelos y transformandolos en tablas sql.
+creamos el mapeo de la base de datos tomando los modelos y transformandolos en tablas sqlite3.
 
 **link importantes**
 Configuracion del campo time_zone 
