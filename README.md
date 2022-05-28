@@ -138,3 +138,32 @@ El metodo filter se usa para traer varios archivos siguiente el codigo anterior 
 Question.objects.filter(question_text__startswith="¿Cual")
 <QuerySet [<Question: ¿Cual es el mejor curso de platsi?>]>
 ```
+
+## Accediendo al conjunto de respuestas
+
+```py
+# obtenemos la pregunta con el id =1
+>>> q = Question.objects.get(pk=1)                                 
+>>> q                                                              
+<Question: ¿Cual es el mejor curso de platsi?> 
+# Accedemos a traves de la clave foranea para ver si hay respuestas                    
+>>> q.choice_set.all()                                             
+<QuerySet []>   
+# creamos una respuesta para esa pregunta.                                                   
+>>> q.choice_set.create(choice_text="Curso Básico de Python", votes
+=0)                                                                
+<Choice: Curso Básico de Python>                                   
+>>> q.choice_set.count()
+3                                                                 
+```
+
+# El administrador de Django.
+
+Phyton posee un administrador de datos este administrador nos permite manipular los datos mediante una interfaz grafica.
+
+```py
+# comando que nos permite crear un usuario
+py manage.py createsuperuser
+```
+
+Una vez configurado el usuario y la contraseña vamos a la ruta del proyecto: http://127.0.0.1:8000/admin/login/?next=/admin/
