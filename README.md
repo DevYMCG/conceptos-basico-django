@@ -114,7 +114,10 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> q.save()
 # verificar que la pregunta creada se haya guardado
 >>> q.question_text
-'¿Cual es el mejor curso de platsi?'
+'¿Cual es el mejor curso de platzi?'
+#traer la pregunta con el pk=1, nota el metodo get trae un solo objeto
+>>> Question.objects.get(pk=1)
+<Question: ¿Cual es el mejor curso de platzi?>
 ```
 
 nota cada vez que nosotros actualizemos o agreguemos algo a los modelos tenemos que ejecutar los comandos
