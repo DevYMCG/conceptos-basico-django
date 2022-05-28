@@ -115,7 +115,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 # verificar que la pregunta creada se haya guardado
 >>> q.question_text
 '¿Cual es el mejor curso de platzi?'
-#traer la pregunta con el pk=1, nota el metodo get trae un solo objeto
+#traer la pregunta con el pk=1, nota el metodo get trae un solo objeto, para traer varios registros usamos filter
 >>> Question.objects.get(pk=1)
 <Question: ¿Cual es el mejor curso de platzi?>
 ```
@@ -125,4 +125,16 @@ nota cada vez que nosotros actualizemos o agreguemos algo a los modelos tenemos 
 ```py
 λ py manage.py makemigrations polls
 λ py manage.py migrate
+```
+
+## Metodo FILTER
+
+El metodo filter se usa para traer varios archivos siguiente el codigo anterior quedaria de esta forma:
+
+```py
+# traer registros del año ´presente
+>>> Question.objects.filter(pub_date__year=timezone.now().year)
+# traer todos los registros que comiencen con ¿Cual
+Question.objects.filter(question_text__startswith="¿Cual")
+<QuerySet [<Question: ¿Cual es el mejor curso de platsi?>]>
 ```
