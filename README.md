@@ -167,3 +167,32 @@ py manage.py createsuperuser
 ```
 
 Una vez configurado el usuario y la contraseña vamos a la ruta del proyecto: http://127.0.0.1:8000/admin/login/?next=/admin/
+
+# vistas o views
+
+Arquitectura de Django MTV (Model Templates View)
+
+Django nos permite crear app webs van a estar dividas en dos partes frontend(Templates) y backend(Views). el backend se va a trabajar con un framework de desarrollo por ejemplo flask, Django y FastAPI y el frontend con HTML, CSS Y JS. El backend de Django se usa las views y para el frontend los templates.
+
+las vistas estan construidas en funciones y clases 
+
+## creando vistas.
+
+Configuramos en view.py las vistas
+
+```py
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    #ex: /polls
+    path("", views.index, name="index"),
+    #ex: /polls/5
+    path("<int:question_id>/", views.detail, name="index"),
+    #ex: /polls/5/results
+    path("<int:question_id>/results/", views.results, name="index"),
+    #ex: /polls/5/vote
+    path("<int:question_id>/vote/", views.vote, name="index")
+]
+```
