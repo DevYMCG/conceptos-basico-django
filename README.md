@@ -196,3 +196,21 @@ urlpatterns = [
     path("<int:question_id>/vote/", views.vote, name="index")
 ]
 ```
+
+## Templates
+
+Polls creamos una carpeta denominada templates/polls
+
+django tiene un lenguaje especial para crear las vistas de nuestra app, que se crea usando los simbolos de la 
+
+```py
+{% if latest_question_list  %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="/polls/{{ question.id }}">{{ question.question_text}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+```
