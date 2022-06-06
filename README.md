@@ -214,3 +214,19 @@ django tiene un lenguaje especial para crear las vistas de nuestra app, que se c
     <p>No polls are available.</p>
 {% endif %}
 ```
+
+### Test
+
+Ingresamos a la consola interactiva de Django
+
+```py
+py manage.py shell
+```
+
+# consultas a la base de datos
+
+```py
+Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")[:5]
+```
+
+Lee: Del modelo **Question** a partir del atributo object vamos a hacer una consulta de tipo **Filter** donde cuya fecha de publicación sea menor o igual a fecha actual ordenando de las mas recientes a la mas antigua y guardamos las 5 primeras.
